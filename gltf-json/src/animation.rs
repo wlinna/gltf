@@ -81,6 +81,7 @@ pub struct Animation {
     
     /// Optional application specific data.
     #[serde(default)]
+    #[cfg_attr(feature = "extras", serde(skip_serializing_if = "Option::is_none"))]
     pub extras: Extras,
     
     /// An array of channels, each of which targets an animation's sampler at a
@@ -92,6 +93,7 @@ pub struct Animation {
     
     /// Optional user-defined name for this object.
     #[cfg(feature = "names")]
+    #[cfg_attr(feature = "names", serde(skip_serializing_if = "Option::is_none"))]
     pub name: Option<String>,
     
     /// An array of samplers that combine input and output accessors with an
@@ -116,6 +118,7 @@ pub struct Channel {
     
     /// Optional application specific data.
     #[serde(default)]
+    #[cfg_attr(feature = "extras", serde(skip_serializing_if = "Option::is_none"))]
     pub extras: Extras,
 }
 
@@ -128,6 +131,7 @@ pub struct Target {
     
     /// Optional application specific data.
     #[serde(default)]
+    #[cfg_attr(feature = "extras", serde(skip_serializing_if = "Option::is_none"))]
     pub extras: Extras,
     
     /// The index of the node to target.
@@ -147,6 +151,7 @@ pub struct Sampler {
     
     /// Optional application specific data.
     #[serde(default)]
+    #[cfg_attr(feature = "extras", serde(skip_serializing_if = "Option::is_none"))]
     pub extras: Extras,
     
     /// The index of an accessor containing keyframe input values, e.g., time.
